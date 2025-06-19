@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiniMercado Web - Início</title>
+    <!-- Link para o Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -14,73 +18,90 @@
                 <li><a href="frutasEverduras.html">Frutas e verduras</a></li>
                 <li><a href="naoPereciveis.html">Alimentos não pereciveis</a></li>
                 <li><a href="higieneElimpeza.html">Higiene e limpeza</a></li>
+                <li><a href="cliente.html">Área do Cliente</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section>
+     <main>
+        <section class="descontos-section">
             <h2>Descontos da semana</h2>
-            <article>
-                <h3>Não pereciveis em desconto</h3>
-                <div>
-                    <h4>Arroz Integral - 1kg</h4>
-                    <img src="imagens/arroz.jpg" alt="Pacote de arroz integral" width="150">
-                    <p><strong>De R$ 11,99 por R$ 8,50</strong></p>
+            
+            <!-- Carrossel com  os produtos em desconto -->
+            <div class="swiper">
+                <div class="swiper-wrapper">>
+                    <div class="swiper-slide">
+                        <div class="product-card">
+                            <span class="product-category">Alimentos não perecíveis</span>
+                            <h4>Arroz Integral - 1kg</h4>
+                            <img src="imagens/arroz.jpg" alt="Pacote de arroz integral">
+                            <p class="original-price">De R$ 11,99</p>
+                            <p class="discount-price">Por R$ 8,50</p>
+                            <a href="naoPereciveis.html" class="category-link">Ver categoria</a>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="product-card">
+                            <span class="product-category">Alimentos não perecíveis</span>
+                            <h4>Feijão Preto - 1kg</h4>
+                            <img src="imagens/feijao.jpg" alt="Pacote de feijão preto">
+                            <p class="original-price">De R$ 8,99</p>
+                            <p class="discount-price">Por R$ 5,99</p>
+                            <a href="naoPereciveis.html" class="category-link">Ver categoria</a>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="product-card">
+                            <span class="product-category">Frutas e verduras</span>
+                            <h4>Laranja do céu saco - 1kg</h4>
+                            <img src="imagens/laranja.jpg" alt="Laranja do céu saco - 1kg">
+                            <p class="original-price">De R$ 18,98</p>
+                            <p class="discount-price">Por R$ 15,60</p>
+                            <a href="frutasEverduras.html" class="category-link">Ver categoria</a>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="product-card">
+                            <span class="product-category">Frutas e verduras</span>
+                            <h4>Cebola roxa granel</h4>
+                            <img src="imagens/cebola.jpg" alt="Cebola roxa granel">
+                            <p class="original-price">De R$ 8,20/kg</p>
+                            <p class="discount-price">Por R$ 6,30/kg</p>
+                            <a href="frutasEverduras.html" class="category-link">Ver categoria</a>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="product-card">
+                            <span class="product-category">Higiene e limpeza</span>
+                            <h4>Detergente Líquido - 500ml</h4>
+                            <img src="imagens/detergente.jpg" alt="Frasco de detergente líquido">
+                            <p class="original-price">De R$ 4,30</p>
+                            <p class="discount-price">Por R$ 2,80</p>
+                            <a href="higieneElimpeza.html" class="category-link">Ver categoria</a>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="product-card">
+                            <span class="product-category">Higiene e limpeza</span>
+                            <h4>Creme dental</h4>
+                            <img src="imagens/cremeDental.jpg" alt="Creme dental">
+                            <p class="original-price">De R$ 3,89</p>
+                            <p class="discount-price">Por R$ 2,89</p>
+                            <a href="higieneElimpeza.html" class="category-link">Ver categoria</a>
+                        </div>
+                    </div>
                 </div>
-                
-                <div>
-                    <h4>Feijão Preto - 1kg</h4>
-                    <img src="imagens/feijao.jpg" alt="Pacote de feijão preto" width="150">
-                    <p><strong>De R$ 8,99 por R$ 5,99</strong></p>
-                </div>
-                <a href="naoPereciveis.html">Ver mais alimentos não pereciveis</a>
-            </article>
-
-            <article>
-                <h3>Frutas e verduras em desconto</h3>
-                <div>
-                    <h4>Laranja do céu saco - 1kg</h4>
-                    <img src="imagens/laranja.jpg" alt="Larnja do céu saco - 1kg" width="150">
-                    <p><strong>DeR$ 18,98 por R$ 15,60</strong></p>
-                </div>
-                
-                <div>
-                    <h4>Cebola roxa granel</h4>
-                    <img src="imagens/cebola.jpg" alt="Cebola roxa granel" width="150">
-                    <p><strong>De R$ 8,20/kg por R$ 6,30/kg</strong></p>
-                </div>
-                <a href="frutasEverduras.html">Ver mais frutas e verduras</a>
-            </article>
-
-            <article>
-                <h3>Produtos de Limpeza e higiene em desconto</h3>
-                <div>
-                    <h4>Detergente Líquido - 500ml</h4>
-                    <img src="imagens/detergente.jpg" alt="Frasco de detergente líquido" width="150">
-                    <p><strong>De R$ 4,30 por R$ 2,80</strong></p>
-                </div>
-                
-                <div>
-                    <h4>Creme dental</h4>
-                    <img src="imagens/cremeDental.jpg" alt="Creme dental" width="150">
-                    <p><strong>De R$ 3,89 por R$ 2,89</strong></p>
-                </div>
-                <a href="higieneElimpeza.html">Ver mais produtos de higiene e limpeza</a>
-            </article>
-        </section>
-
-        <section>
-            <h2>Nossos Serviços</h2>
-            <div>
-                <h3>Entrega a Domicílio</h3>
-                <p>Entregamos suas compras em até 2 horas na região</p>
-                <p><strong>Taxa: R$ 5,00 (grátis para compras acima de R$ 100,00)</strong></p>
-            </div>
-            <div>
-                <h3>Retirada no local</h3>
-                <p>Retirada em até 30 minutos no endereço</p>
-                <p><strong>Não cobramos taxas adicionais para esse serviço</strong></p>
+                <!-- Botões de navegação -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+                <!-- Paginação -->
+            <div class="swiper-pagination"></div>
             </div>
         </section>
     </main>
@@ -104,19 +125,23 @@
             <p>Domingo: 9h às 13h</p>
         </section>
 
-        <section>
+        <section class="quick-links">
             <h2>Links Rápidos</h2>
-            <nav>
-              <ul>
+            <ul>
                 <li><a href="index.html">Início</a></li>
-                <li><a href="frutasEverduras.html">Alimentos</a></li>
-                <li><a href="naoPereciveis.html">Bebidas</a></li>
-                <li><a href="higieneElimpeza.html">Limpeza</a></li>
+                <li><a href="frutasEverduras.html">Frutas e Verduras</a></li>
+                <li><a href="naoPereciveis.html">Não Perecíveis</a></li>
+                <li><a href="higieneElimpeza.html">Higiene e Limpeza</a></li>
+                <li><a href="area_cliente.html">Área do Cliente</a></li>
+                <li><a href="checkout.html">Finalizar Compra</a></li>
             </ul>
-            </nav>
         </section>
 
-         <p>&copy; 2023 MiniMercado Web - Todos os direitos reservados</p>
+        <p style="grid-column: 1 / -1; text-align: center; margin-top: 1rem;">
+            &copy; 2023 MiniMercado Web - Todos os direitos reservados
+        </p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>

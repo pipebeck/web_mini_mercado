@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniMercado Web - Finalizar Compra</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            background-color: #34495e;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #2980b9;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .checkout-section {
+            margin-bottom: 30px;
+        }
+        
+        .delivery-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .delivery-option {
+            flex: 1;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .delivery-option:hover {
+            border-color: #3498db;
+        }
+        
+        .delivery-option.selected {
+            border-color: #3498db;
+            background-color: #f0f8ff;
+        }
+        
+        .delivery-option input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        .flatpickr-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus,
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+        
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn-submit:hover {
+            background-color: #2980b9;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .time-slot {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .time-slot:hover {
+            border-color: #3498db;
+        }
+        
+        .time-slot.selected {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .login-toggle {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .login-toggle a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .login-toggle a:hover {
+            text-decoration: underline;
+        }
+        
+        .login-form {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .user-info {
+            display: none;
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .user-info p {
+            margin-bottom: 8px;
+        }
+        
+        .logout-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .logout-btn:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .delivery-options {
+                flex-direction: column;
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MiniMercado Web</h1>
+        <p>Seu mercado de conveniência online</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="frutasEverduras.html">Frutas e verduras</a></li>
+                <li><a href="naoPereciveis.html">Alimentos não perecíveis</a></li>
+                <li><a href="higieneElimpeza.html">Higiene e limpeza</a></li>
+                <li><a href="cliente.html">Área do Cliente</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Finalizar Compra</h2>
+        <div class="login-form" id="loginForm">
+            <h3>Login</h3>
+            <div class="form-group">
+                <label for="loginEmail">E-mail</label>
+                <input type="email" id="loginEmail" placeholder="seu@email.com">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Senha</label>
+                <input type="password" id="loginPassword" placeholder="Sua senha">
+            </div>
+            <button type="button" class="btn-submit" id="loginBtn">Entrar</button>
+            <div style="text-align: center; margin-top: 15px;">
+                <a href="#" id="hideLogin">Cancelar</a>
+            </div>
+        </div>
+        
+        <div class="user-info" id="userInfo">
+            <h3>Informações do Cliente</h3>
+            <p><strong>Nome:</strong> <span id="userName">João Silva</span></p>
+            <p><strong>E-mail:</strong> <span id="userEmail">joao@exemplo.com</span></p>
+            <p><strong>Telefone:</strong> <span id="userPhone">(11) 98765-4321</span></p>
+            <button class="logout-btn" id="logoutBtn">Sair</button>
+        </div>
+        
+        <!-- Formulário de Checkout -->
+        <div class="checkout-form">
+            <div class="checkout-section">
+                <h3>Opções de Recebimento</h3>
+                <div class="delivery-options">
+                    <label class="delivery-option" id="pickupOption">
+                        <input type="radio" name="deliveryType" value="pickup" checked> 
+                        <strong>Retirada no Local</strong>
+                        <p>Retire seu pedido em nossa loja</p>
+                    </label>
+                    <label class="delivery-option" id="deliveryOption">
+                        <input type="radio" name="deliveryType" value="delivery"> 
+                        <strong>Tele-entrega</strong>
+                        <p>Entregamos no seu endereço</p>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="checkout-section" id="deliveryAddressSection" style="display: none;">
+                <h3>Endereço de Entrega</h3>
+                <div class="form-group">
+                    <label for="address">Endereço Completo</label>
+                    <input type="text" id="address" placeholder="Rua, número, complemento, bairro">
+                </div>
+                <div class="form-group">
+                    <label for="reference">Ponto de Referência</label>
+                    <input type="text" id="reference" placeholder="Ex: Próximo ao mercado X">
+                </div>
+            </div>
+            
+            <div class="checkout-section">
+                <h3>Agendamento</h3>
+                <div class="form-group">
+                    <label for="deliveryDate">Data</label>
+                    <input type="text" id="deliveryDate" class="flatpickr-input" placeholder="Selecione a data">
+                </div>
+                
+                <div class="form-group">
+                    <label>Horário Disponível</label>
+                    <div class="time-slots">
+                        <div class="time-slot">08:00 - 10:00</div>
+                        <div class="time-slot">10:00 - 12:00</div>
+                        <div class="time-slot">12:00 - 14:00</div>
+                        <div class="time-slot">14:00 - 16:00</div>
+                        <div class="time-slot">16:00 - 18:00</div>
+                        <div class="time-slot">18:00 - 20:00</div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">Confirmar Pedido</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+    <script>
+        // Configuração do calendário
+        flatpickr("#deliveryDate", {
+            locale: "pt",
+            minDate: "today",
+            maxDate: new Date().fp_incr(7), // 7 dias a partir de hoje
+            disable: [
+                function(date) {
+                    // Desabilita domingos
+                    return (date.getDay() === 0);
+                }
+            ]
+        });
+
+        // Alternar entre retirada e entrega
+        document.querySelectorAll('input[name="deliveryType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const deliverySection = document.getElementById('deliveryAddressSection');
+                
+                if (this.value === 'delivery') {
+                    deliverySection.style.display = 'block';
+                } else {
+                    deliverySection.style.display = 'none';
+                }
+            });
+        });
+
+        // Selecionar horário
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('.time-slot').forEach(s => {
+                    s.classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+        });
+
+        // Máscara para telefone
+        document.getElementById('contactPhone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) value = '(' + value;
+            if (value.length > 3) value = value.replace(/^(\d{2})/, '$1) ');
+            if (value.length > 10) value = value.replace(/^(\d{2})\)\s(\d{5})/, '$1) $2-');
+            e.target.value = value.substring(0, 15);
+        });
+
+        // Marcar primeira opção de retirada como selecionada
+        document.querySelector('.delivery-option input[value="pickup"]').parentElement.classList.add('selected');
+        document.querySelector('.time-slot').classList.add('selected');
+    </script>
+</body>
+</html>
